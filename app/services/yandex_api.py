@@ -8,6 +8,7 @@ from app.constants import (
     MINUTES_IN_HOUR, MINUTES_IN_DAY, STREAM_START_POSITION
 )
 
+
 def format_time_delta(delta: timedelta) -> str:
     total_minutes = int(delta.total_seconds() / MINUTES_IN_HOUR)
     days = total_minutes // MINUTES_IN_DAY
