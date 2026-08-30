@@ -4,9 +4,7 @@ from io import BytesIO
 import xlsxwriter
 
 from app.core.config import settings
-from app.constants import (
-    MINUTES_IN_HOUR, MINUTES_IN_DAY, STREAM_START_POSITION
-)
+from app.constants import MINUTES_IN_HOUR, MINUTES_IN_DAY
 
 
 def format_time_delta(delta: timedelta) -> str:
@@ -72,10 +70,9 @@ async def create_simple_report(client, projects) -> str:
         worksheet.set_column("A:A", 30)
         worksheet.set_column("B:B", 20)
         worksheet.set_column("C:C", 50)
-    output.seek(STREAM_START_POSITION)
     await client.upload_file(
         upload_url,
-        output.read(),
+        output.getvalue(),
     )
     public_url = await client.publish_file(file_path)
 
