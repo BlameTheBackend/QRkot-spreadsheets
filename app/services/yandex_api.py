@@ -72,7 +72,6 @@ async def create_simple_report(client, projects) -> str:
         worksheet.set_column("A:A", 30)
         worksheet.set_column("B:B", 20)
         worksheet.set_column("C:C", 50)
-        workbook.close()
     output.seek(STREAM_START_POSITION)
     await client.upload_file(
         upload_url,
